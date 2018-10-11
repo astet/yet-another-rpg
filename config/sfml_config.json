@@ -1,0 +1,11 @@
+{
+    "fullscreen": false,
+    "name": "rpg",
+    "size": [
+        1920,
+        1080
+    ],
+    "vsync": false,
+    "native_resolution": false
+}
+

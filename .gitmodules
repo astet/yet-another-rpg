@@ -1,0 +1,3 @@
+[submodule "external/shiva"]
+	path = external/shiva
+	url = https://github.com/astet/shiva
