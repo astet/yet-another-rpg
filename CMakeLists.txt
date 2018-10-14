@@ -14,16 +14,13 @@ include(library)
 #find_package(shiva-sfml CONFIG REQUIRED)
 #find_package(shiva-box2d CONFIG REQUIRED)
 #find_package(shiva-imgui CONFIG REQUIRED)
-if (NOT TARGET Boost::filesystem)
-    find_package(Boost COMPONENTS filesystem REQUIRED)
-endif()
 
 ##! Sources
 file(GLOB_RECURSE RPG_SOURCES src/*.cpp prerequisites/*.cpp)
 file(GLOB_RECURSE RPG_HEADERS src/*.hpp)
 
 ##! Executable
-add_executable(${PROJECT_NAME} ${RPG_SOURCES} ${RPG_HEADERS})
+add_executable(rpg ${RPG_SOURCES} ${RPG_HEADERS})
 
 ##! Linking
 ##! We manualy link LUA_LIBRARIES on Windows,
@@ -44,6 +41,14 @@ set_target_properties(rpg
         PDB_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin"
         PDB_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin"
         PDB_OUTPUT_DIRECTORY_DEBUG "${CMAKE_SOURCE_DIR}/bin")
+
+add_dependencies(rpg
+        shiva::shiva-system-sfml-graphics
+        shiva::shiva-system-sfml-inputs
+        shiva::shiva-system-sfml-resources
+        shiva::shiva-system-sfml-animation
+        shiva::shiva-system-imgui
+        shiva::shiva-system-sfml-video)
 
 ##! Helpers
 macro(add_scene scene_name)
