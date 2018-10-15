@@ -75,6 +75,3 @@ add_resource(intro.avi videos intro_scene)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config/sfml_config.json
         ${CMAKE_SOURCE_DIR}/bin/assets/cfg/sfml_config.json
         COPYONLY)
-
-
-
