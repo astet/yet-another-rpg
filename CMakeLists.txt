@@ -8,6 +8,7 @@ add_subdirectory(external/shiva)
 ##! CMake Path
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(library)
+include(PrecompiledHeader)
 
 ##! Shiva
 #find_package(shiva CONFIG REQUIRED)
@@ -21,6 +22,8 @@ file(GLOB_RECURSE RPG_HEADERS src/*.hpp)
 
 ##! Executable
 add_executable(rpg ${RPG_SOURCES} ${RPG_HEADERS})
+
+#add_precompiled_header(rpg pch.hpp SOURCE_CXX pch.cpp FORCEINCLUDE)
 
 ##! Linking
 ##! We manualy link LUA_LIBRARIES on Windows,
@@ -43,6 +46,7 @@ set_target_properties(rpg
         PDB_OUTPUT_DIRECTORY_DEBUG "${CMAKE_SOURCE_DIR}/bin")
 
 add_dependencies(rpg
+#        shiva::shiva-system-vulkan-graphics
         shiva::shiva-system-sfml-graphics
         shiva::shiva-system-sfml-inputs
         shiva::shiva-system-sfml-resources
