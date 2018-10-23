@@ -43,6 +43,7 @@ set_target_properties(rpg
         PDB_OUTPUT_DIRECTORY_DEBUG "${CMAKE_SOURCE_DIR}/bin")
 
 add_dependencies(rpg
+        shiva::vulkan
         shiva::shiva-system-sfml-graphics
         shiva::shiva-system-sfml-inputs
         shiva::shiva-system-sfml-resources
